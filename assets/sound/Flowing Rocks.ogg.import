@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://sv5r57w3yac1"
-path="res://.godot/imported/Flowing Rocks.ogg-cb7cabea6de9a25e96983c52b0393088.oggvorbisstr"
+path="res://.godot/imported/Flowing Rocks.ogg-04743037470fa3612c359aa32c21b755.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/sound/Flowing Rocks.ogg"
-dest_files=["res://.godot/imported/Flowing Rocks.ogg-cb7cabea6de9a25e96983c52b0393088.oggvorbisstr"]
+source_file="res://Assets/sound/Flowing Rocks.ogg"
+dest_files=["res://.godot/imported/Flowing Rocks.ogg-04743037470fa3612c359aa32c21b755.oggvorbisstr"]
 
 [params]
 

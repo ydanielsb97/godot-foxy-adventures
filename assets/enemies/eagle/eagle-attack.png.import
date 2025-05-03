@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://df2bbdwegr6u0"
-path="res://.godot/imported/eagle-attack.png-6fe7a5a11309f7e101f81e999cbab6f5.ctex"
+path="res://.godot/imported/eagle-attack.png-e01665b27f5196522a46e91b080dbfb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/eagle/eagle-attack.png"
-dest_files=["res://.godot/imported/eagle-attack.png-6fe7a5a11309f7e101f81e999cbab6f5.ctex"]
+source_file="res://Assets/enemies/eagle/eagle-attack.png"
+dest_files=["res://.godot/imported/eagle-attack.png-e01665b27f5196522a46e91b080dbfb5.ctex"]
 
 [params]
 

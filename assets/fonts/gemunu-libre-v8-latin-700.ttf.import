@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://q1ynewkbskl8"
-path="res://.godot/imported/gemunu-libre-v8-latin-700.ttf-a64e5176d69fe100d4be56760ea47d6d.fontdata"
+path="res://.godot/imported/gemunu-libre-v8-latin-700.ttf-672c35e0feaf90760a28045ce373ae7c.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/gemunu-libre-v8-latin-700.ttf"
-dest_files=["res://.godot/imported/gemunu-libre-v8-latin-700.ttf-a64e5176d69fe100d4be56760ea47d6d.fontdata"]
+source_file="res://Assets/fonts/gemunu-libre-v8-latin-700.ttf"
+dest_files=["res://.godot/imported/gemunu-libre-v8-latin-700.ttf-672c35e0feaf90760a28045ce373ae7c.fontdata"]
 
 [params]
 

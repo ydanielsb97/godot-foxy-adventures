@@ -29,11 +29,11 @@ naming/script_name_casing=1
 [file_customization]
 
 folder_colors={
+"res://Assets/": "yellow",
 "res://Classes/": "blue",
 "res://Globals/": "green",
 "res://Resources/": "purple",
-"res://Scenes/": "red",
-"res://assets/": "yellow"
+"res://Scenes/": "red"
 }
 
 [input]

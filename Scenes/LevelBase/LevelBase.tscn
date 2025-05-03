@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://cxbrat640wbw1"]
 
-[ext_resource type="Texture2D" uid="uid://bahptnriuem7k" path="res://assets/tiles/Terrain (16x16).png" id="1_5ufo3"]
+[ext_resource type="Texture2D" uid="uid://bahptnriuem7k" path="res://Assets/tiles/Terrain (16x16).png" id="1_5ufo3"]
 [ext_resource type="PackedScene" uid="uid://5p8a0vggxlgy" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_bgw71"]

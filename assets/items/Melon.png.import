@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dghxet1q1gtat"
-path="res://.godot/imported/Melon.png-06f63d22cecbc8743200362ce080eaf3.ctex"
+path="res://.godot/imported/Melon.png-eafbc56d8ae359030fc0b1ea19f81a5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Melon.png"
-dest_files=["res://.godot/imported/Melon.png-06f63d22cecbc8743200362ce080eaf3.ctex"]
+source_file="res://Assets/items/Melon.png"
+dest_files=["res://.godot/imported/Melon.png-eafbc56d8ae359030fc0b1ea19f81a5f.ctex"]
 
 [params]
 

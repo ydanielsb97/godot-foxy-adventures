@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c2jhjv2aeo0sr"
-path="res://.godot/imported/boss_arrive.wav-4e055da4e4cd5f8389e8d9938119f3db.sample"
+path="res://.godot/imported/boss_arrive.wav-80d240e40f43322fda43590488841dd1.sample"
 
 [deps]
 
-source_file="res://assets/sound/boss_arrive.wav"
-dest_files=["res://.godot/imported/boss_arrive.wav-4e055da4e4cd5f8389e8d9938119f3db.sample"]
+source_file="res://Assets/sound/boss_arrive.wav"
+dest_files=["res://.godot/imported/boss_arrive.wav-80d240e40f43322fda43590488841dd1.sample"]
 
 [params]
 
