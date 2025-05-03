@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwlu5fwi1ud76"]
+[gd_scene load_steps=17 format=3 uid="uid://dwlu5fwi1ud76"]
 
 [ext_resource type="PackedScene" uid="uid://wl346ch1wqr" path="res://Scenes/Enemies/EnemyBase.tscn" id="1_pgtwq"]
 [ext_resource type="Texture2D" uid="uid://dgktrijgxkrk2" path="res://Assets/enemies/snail/snail.png" id="2_nw2lc"]
+[ext_resource type="Script" uid="uid://ngxcigxg4664" path="res://Scenes/Enemies/Snail.gd" id="2_ovxyt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw2lc"]
 radius = 9.0
@@ -89,6 +90,7 @@ animations = [{
 size = Vector2(27, 16)
 
 [node name="Snail" instance=ExtResource("1_pgtwq")]
+script = ExtResource("2_ovxyt")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-1, 0)
