@@ -22,14 +22,8 @@ func _physics_process(delta: float) -> void:
 	if _seen_player:
 		flip_me()
 
-func flip_me() -> void:
-	animated_sprite_2d.flip_h = _player_ref.global_position.x > global_position.x
-
 func apply_jump() -> void:
-	if !is_on_floor() or !_can_jump:
-		return
-	
-	if !_seen_player:
+	if !is_on_floor() or !_can_jump or !_seen_player:
 		return
 	
 	velocity = JUMP_VELOCITY_R if animated_sprite_2d.flip_h else JUMP_VELOCITY_L
