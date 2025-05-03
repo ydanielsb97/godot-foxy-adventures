@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://cxbrat640wbw1"]
+[gd_scene load_steps=10 format=4 uid="uid://cxbrat640wbw1"]
 
 [ext_resource type="Texture2D" uid="uid://bahptnriuem7k" path="res://Assets/tiles/Terrain (16x16).png" id="1_5ufo3"]
 [ext_resource type="PackedScene" uid="uid://5p8a0vggxlgy" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
-[ext_resource type="PackedScene" uid="uid://dwlu5fwi1ud76" path="res://Scenes/Enemies/Snail.tscn" id="3_78m1b"]
-[ext_resource type="PackedScene" uid="uid://drexgubycmqmx" path="res://Scenes/Enemies/Frog.tscn" id="4_3lxj6"]
+[ext_resource type="PackedScene" uid="uid://dwlu5fwi1ud76" path="res://Scenes/Enemies/Snail/Snail.tscn" id="3_78m1b"]
+[ext_resource type="PackedScene" uid="uid://drexgubycmqmx" path="res://Scenes/Enemies/Frog/Frog.tscn" id="4_3lxj6"]
+[ext_resource type="PackedScene" uid="uid://dhkon18e3g27m" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="5_lmtt4"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_bgw71"]
 tile_data = PackedInt32Array(65536, 786432, 0, 1, 786432, 1, 65537, 851968, 0, 65538, 917504, 0)
@@ -219,3 +220,6 @@ position = Vector2(272, -27)
 
 [node name="Frog" parent="." instance=ExtResource("4_3lxj6")]
 position = Vector2(60, -152)
+
+[node name="Eagle" parent="." instance=ExtResource("5_lmtt4")]
+position = Vector2(198, -286)

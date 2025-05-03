@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhkon18e3g27m"]
+
+[ext_resource type="PackedScene" uid="uid://wl346ch1wqr" path="res://Scenes/Enemies/EnemyBase.tscn" id="1_bmpsp"]
+[ext_resource type="Texture2D" uid="uid://df2bbdwegr6u0" path="res://Assets/enemies/eagle/eagle-attack.png" id="2_8eptn"]
+[ext_resource type="Script" uid="uid://ceeehmp66u7gl" path="res://Scenes/Enemies/Eagle/Eagle.gd" id="2_luig0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euo1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luig0"]
+atlas = ExtResource("2_8eptn")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4258"]
+atlas = ExtResource("2_8eptn")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhy2t"]
+atlas = ExtResource("2_8eptn")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foiie"]
+atlas = ExtResource("2_8eptn")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8eptn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luig0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4258")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhy2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foiie")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gs16j"]
+radius = 16.0312
+
+[node name="Eagle" instance=ExtResource("1_bmpsp")]
+collision_mask = 0
+script = ExtResource("2_luig0")
+fly_speed = Vector2(35, 15)
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_euo1a")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_8eptn")
+animation = &"fly"
+frame_progress = 0.26634
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_gs16j")
+debug_color = Color(0, 0.651136, 0.0312319, 0.42)
+
+[node name="PlayerDetector" type="RayCast2D" parent="." index="4"]
+target_position = Vector2(0, 300)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DirectionTimer" type="Timer" parent="." index="5"]
+wait_time = 3.0
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
