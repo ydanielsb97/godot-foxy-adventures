@@ -23,6 +23,8 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	set_physics_process(false)
+	SignalHub.emit_create_object(global_position, Constants.ObjectType.PICKUP)
+	SignalHub.emit_create_object(global_position, Constants.ObjectType.EXPLOSION)
 	queue_free()
 	
 func flip_me() -> void:
