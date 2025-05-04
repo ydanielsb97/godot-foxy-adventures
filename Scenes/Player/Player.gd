@@ -16,6 +16,18 @@ const MAX_SPEED_FALL: float = 350.0
 
 var jumps: int = 0
 
+
+const PLAYER_BULLET = preload("res://Scenes/Bullets/PlayerBullet/PlayerBullet.tscn")
+@onready var shooter: Shooter = $Shooter
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		var direction: Vector2 = Vector2.LEFT if sprite_2d.flip_h else Vector2.RIGHT
+		shooter.shoot(direction)
+		#var new_player_bullet = PLAYER_BULLET.instantiate()
+		#new_player_bullet.position = global_position
+		#get_parent().add_child(new_player_bullet)
+		
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
 
