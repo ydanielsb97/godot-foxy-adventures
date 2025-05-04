@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://5p8a0vggxlgy"]
+[gd_scene load_steps=31 format=3 uid="uid://5p8a0vggxlgy"]
 
 [ext_resource type="Script" uid="uid://dhwtnr1q23h5s" path="res://Scenes/Player/Player.gd" id="1_ft8w5"]
 [ext_resource type="Texture2D" uid="uid://cw40282td8y26" path="res://Assets/player/player.png" id="1_s0eop"]
 [ext_resource type="PackedScene" uid="uid://cob8hqna24ngs" path="res://Scenes/PlayerCam/PlayerCam.tscn" id="3_h54ih"]
 [ext_resource type="PackedScene" uid="uid://1d62317pgdtr" path="res://Scenes/Shooter/Shooter.tscn" id="4_ude3g"]
+[ext_resource type="AudioStream" uid="uid://dm15rbfvf0en3" path="res://Assets/sound/jump.wav" id="5_jmcll"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0eop"]
 radius = 6.0
@@ -239,3 +240,7 @@ debug_color = Color(0, 0.647444, 0.210878, 0.42)
 
 [node name="Shooter" parent="." instance=ExtResource("4_ude3g")]
 speed = 300.0
+shoot_delay = 0.3
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jmcll")

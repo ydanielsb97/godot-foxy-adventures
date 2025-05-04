@@ -4,6 +4,7 @@ class_name Player
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
+@onready var sound: AudioStreamPlayer2D = $Sound
 
 @export var fell_off_y: float = 800.0
 
@@ -64,9 +65,11 @@ func handle_jump_input() -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = JUMP_SPEED
+			sound.play()
 			jumps += 1
 		elif jumps < JUMP_TIMES_LIMIT:
 			velocity.y = JUMP_SPEED
+			sound.play()
 			jumps += 1
 	
 
