@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk67iqkxyx7ly"]
+
+[ext_resource type="PackedScene" uid="uid://dfvoooopgfhfg" path="res://Scenes/Bullets/BaseBullet.tscn" id="1_0p0ij"]
+[ext_resource type="Script" uid="uid://bp7e640vmiym6" path="res://Scenes/Bullets/EnemyBullet/EnemyBullet.gd" id="2_e7s0c"]
+[ext_resource type="Texture2D" uid="uid://dkk7aw08ja4nu" path="res://Assets/items/bullet2.png" id="2_mmdop"]
+[ext_resource type="Shape2D" uid="uid://wqnimjc5qopm" path="res://Resources/BulletShape.tres" id="3_fkwcd"]
+
+[node name="EnemyBullet" instance=ExtResource("1_0p0ij")]
+script = ExtResource("2_e7s0c")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_mmdop")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = ExtResource("3_fkwcd")

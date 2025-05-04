@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dgktrijgxkrk2" path="res://Assets/enemies/snail/snail.png" id="2_nw2lc"]
 [ext_resource type="Script" uid="uid://ngxcigxg4664" path="res://Scenes/Enemies/Snail/Snail.gd" id="2_ovxyt"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nw2lc"]
 radius = 9.0
 height = 22.0

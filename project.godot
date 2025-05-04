@@ -15,6 +15,10 @@ run/main_scene="uid://cxbrat640wbw1"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://cy7hrne0oriv6"
 
+[autoload]
+
+SignalHub="*res://Globals/SignalHub.gd"
+
 [display]
 
 window/size/viewport_width=1024
