@@ -5,6 +5,7 @@ extends Control
 const HIGHSCORE_DISPLAY = preload("res://Scenes/HighscoreDisplay/HighscoreDisplay.tscn")
 
 func _ready() -> void:
+	get_tree().paused = false
 	load_highscores()
 
 func _unhandled_input(event: InputEvent) -> void:

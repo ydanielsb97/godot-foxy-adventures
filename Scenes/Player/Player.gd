@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var fell_off_y: float = 800.0
+@export var fell_off_y: float = 100.0
+@export var lives: int = 5
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
@@ -29,7 +30,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		var direction: Vector2 = Vector2.LEFT if sprite_2d.flip_h else Vector2.RIGHT
 		shooter.shoot(direction)
-		
+
+func _ready() -> void:
+	Callable(late_init).call_deferred()
+
+func late_init() -> void:
+	SignalHub.emit_player_hit(lives, false)
+
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
 
@@ -92,20 +99,30 @@ func go_invincible() -> void:
 	_invincible = true
 	
 	var tween = create_tween()
-	for _i in range(3):
-		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.5)
-		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.5)
+	#for _i in range(3):
+		#tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.1)
+		#tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.1)
 	tween.tween_property(self, "_invincible", false, 0)
 
 func fallen_off() -> void:
-	if global_position.y > fell_off_y:
-		queue_free()
+	if global_position.y < fell_off_y: return
+	
+	reduce_lives(lives)
 
 func handle_side_movement() -> void:
 	velocity.x = RUN_SPEED * Input.get_axis("left", "right")
 	
 	if not is_equal_approx(velocity.x, 0):
 		sprite_2d.flip_h = velocity.x < 0
+
+func reduce_lives(reduction: int) -> bool:
+	lives -= reduction
+	SignalHub.emit_player_hit(lives, true)
+	if lives <= 0:
+		set_physics_process(false)
+		return false
+	
+	return true
 
 func apply_hurt_jump() -> void:
 	_is_hurt = true
@@ -115,6 +132,9 @@ func apply_hurt_jump() -> void:
 
 func apply_hit() -> void:
 	if _invincible: return
+	
+	if reduce_lives(1) == false:
+		return
 	
 	go_invincible()
 	apply_hurt_jump()
