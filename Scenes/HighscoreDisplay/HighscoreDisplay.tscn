@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfa2c8vnws5mr"]
 
 [ext_resource type="Script" uid="uid://croa4yni83pe5" path="res://Scenes/HighscoreDisplay/HighscoreDisplay.gd" id="1_8ewd1"]
-[ext_resource type="LabelSettings" uid="uid://bocw13qsfbnjm" path="res://Scenes/HighscoreDisplay/light_blue_24.tres" id="1_hp87i"]
+[ext_resource type="LabelSettings" uid="uid://bocw13qsfbnjm" path="res://Resources/light_blue_24.tres" id="1_hp87i"]
 
 [node name="HighscoreDisplay" type="VBoxContainer"]
 modulate = Color(1, 1, 1, 0)

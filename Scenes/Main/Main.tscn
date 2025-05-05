@@ -67,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 50
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="HighscoresContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
