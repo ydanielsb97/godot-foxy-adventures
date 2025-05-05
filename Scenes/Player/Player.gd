@@ -2,11 +2,16 @@ extends CharacterBody2D
 
 class_name Player
 
+@export var fell_off_y: float = 800.0
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var debug_label: Label = $DebugLabel
 @onready var sound: AudioStreamPlayer2D = $Sound
+@onready var hurt_timer: Timer = $HurtTimer
+@onready var shooter: Shooter = $Shooter
 
-@export var fell_off_y: float = 800.0
+const JUMP = preload("res://Assets/sound/jump.wav")
+const DAMAGE = preload("res://Assets/sound/damage.wav")
 
 const GRAVITY: float = 800.0
 const JUMP_SPEED: float = -320.0
@@ -14,20 +19,16 @@ const RUN_SPEED: float = 150.0
 const JUMP_CUT_MULTIPLIER: float = 0.3
 const JUMP_TIMES_LIMIT: int = 2
 const MAX_SPEED_FALL: float = 350.0
+const JUMP_HURT_VELOCITY: Vector2 = Vector2(0, -130.0)
 
-var jumps: int = 0
-
-
-const PLAYER_BULLET = preload("res://Scenes/Bullets/PlayerBullet/PlayerBullet.tscn")
-@onready var shooter: Shooter = $Shooter
+var _jumps: int = 0
+var _is_hurt: bool = false
+var _invincible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		var direction: Vector2 = Vector2.LEFT if sprite_2d.flip_h else Vector2.RIGHT
 		shooter.shoot(direction)
-		#var new_player_bullet = PLAYER_BULLET.instantiate()
-		#new_player_bullet.position = global_position
-		#get_parent().add_child(new_player_bullet)
 		
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
@@ -35,14 +36,24 @@ func _enter_tree() -> void:
 func _physics_process(delta: float) -> void:
 
 	apply_gravity(delta)
+	handle_input()
 	
 	velocity.y = clampf(velocity.y, JUMP_SPEED, MAX_SPEED_FALL)
-	
-	handle_jump_input()
-	handle_side_movement()
+
 	move_and_slide()
 	fallen_off()
 	update_debug_label()
+
+func play_effect(effect: AudioStream) -> void:
+	sound.stop()
+	sound.stream = effect
+	sound.play()
+
+func handle_input() -> void:
+	if _is_hurt: return
+	
+	handle_jump_input()
+	handle_side_movement()
 
 func update_debug_label() -> void:
 	var debug_string: String = ""
@@ -60,21 +71,31 @@ func apply_gravity(delta: float) -> void:
 func handle_jump_input() -> void:
 	
 	if is_on_floor():
-		jumps = 0
+		_jumps = 0
 		
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = JUMP_SPEED
-			sound.play()
-			jumps += 1
-		elif jumps < JUMP_TIMES_LIMIT:
+			play_effect(JUMP)
+			_jumps += 1
+		elif _jumps < JUMP_TIMES_LIMIT:
 			velocity.y = JUMP_SPEED
-			sound.play()
-			jumps += 1
+			play_effect(JUMP)
+			_jumps += 1
 	
 
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= JUMP_CUT_MULTIPLIER
+
+func go_invincible() -> void:
+	if _invincible: return
+	_invincible = true
+	
+	var tween = get_tree().create_tween()
+	for _i in range(3):
+		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.5)
+		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.5)
+	tween.tween_property(self, "_invincible", false, 0)
 
 func fallen_off() -> void:
 	if global_position.y > fell_off_y:
@@ -85,4 +106,21 @@ func handle_side_movement() -> void:
 	
 	if not is_equal_approx(velocity.x, 0):
 		sprite_2d.flip_h = velocity.x < 0
+
+func apply_hurt_jump() -> void:
+	_is_hurt = true
+	velocity = JUMP_HURT_VELOCITY
+	hurt_timer.start()
+	play_effect(DAMAGE)
+
+func apply_hit() -> void:
+	if _invincible: return
 	
+	go_invincible()
+	apply_hurt_jump()
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	Callable(apply_hit).call_deferred()
+
+func _on_hurt_timer_timeout() -> void:
+	_is_hurt = false

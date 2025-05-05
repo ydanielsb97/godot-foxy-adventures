@@ -6,6 +6,8 @@
 [ext_resource type="Shape2D" uid="uid://wqnimjc5qopm" path="res://Resources/BulletShape.tres" id="3_fkwcd"]
 
 [node name="EnemyBullet" instance=ExtResource("1_0p0ij")]
+collision_layer = 16
+collision_mask = 2
 script = ExtResource("2_e7s0c")
 
 [node name="Sprite2D" parent="." index="0"]
