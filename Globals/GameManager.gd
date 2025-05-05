@@ -18,7 +18,6 @@ const SCORES_PATH = "user://high_scores.tres"
 var high_scores: HighScores = HighScores.new()
 var _current_level: int = -1
 
-
 # score to carry over between levels
 var cached_score: int:
 	set (value):
@@ -35,7 +34,6 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	load_high_scores()
-
 
 func _exit_tree():
 	save_high_scores()
@@ -69,3 +67,6 @@ func try_add_new_score(score: int):
 	high_scores.add_new_score(score)
 	save_high_scores()	
 	cached_score = score
+
+func get_player_ref() -> Player:
+	return get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)

@@ -13,9 +13,7 @@ var _gravity: float = 800.0
 var _player_ref: Player
 
 func _ready() -> void:
-	_player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
-	if _player_ref == null:
-		queue_free()
+	_player_ref = GameManager.get_player_ref()
 
 func _physics_process(delta: float) -> void:
 	if global_position.y > FALL_OFF_Y:
