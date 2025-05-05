@@ -22,7 +22,7 @@ func sort_scores():
 	high_scores.sort_custom(compare_scores)
 
 
-func get_scores_list():
+func get_scores_list() -> Array[HighScore]:
 	return high_scores
 
 

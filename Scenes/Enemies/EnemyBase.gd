@@ -25,6 +25,7 @@ func die() -> void:
 	set_physics_process(false)
 	SignalHub.emit_create_object(global_position, Constants.ObjectType.PICKUP)
 	SignalHub.emit_create_object(global_position, Constants.ObjectType.EXPLOSION)
+	SignalHub.emit_scored(points)
 	queue_free()
 	
 func flip_me() -> void:
