@@ -91,7 +91,7 @@ func go_invincible() -> void:
 	if _invincible: return
 	_invincible = true
 	
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	for _i in range(3):
 		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.5)
 		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.5)

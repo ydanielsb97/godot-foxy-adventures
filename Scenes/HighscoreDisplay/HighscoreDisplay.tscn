@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfa2c8vnws5mr"]
+
+[ext_resource type="Script" uid="uid://croa4yni83pe5" path="res://Scenes/HighscoreDisplay/HighscoreDisplay.gd" id="1_8ewd1"]
+[ext_resource type="LabelSettings" uid="uid://bocw13qsfbnjm" path="res://Scenes/HighscoreDisplay/light_blue_24.tres" id="1_hp87i"]
+
+[node name="HighscoreDisplay" type="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("1_8ewd1")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0900"
+label_settings = ExtResource("1_hp87i")
+
+[node name="DateLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "05/05/2025"
+label_settings = ExtResource("1_hp87i")
