@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://cxbrat640wbw1"]
+[gd_scene load_steps=11 format=4 uid="uid://cxbrat640wbw1"]
 
 [ext_resource type="Texture2D" uid="uid://bahptnriuem7k" path="res://Assets/tiles/Terrain (16x16).png" id="1_5ufo3"]
 [ext_resource type="PackedScene" uid="uid://5p8a0vggxlgy" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://dwlu5fwi1ud76" path="res://Scenes/Enemies/Snail/Snail.tscn" id="3_78m1b"]
 [ext_resource type="AudioStream" uid="uid://sv5r57w3yac1" path="res://Assets/sound/Flowing Rocks.ogg" id="5_lmtt4"]
 [ext_resource type="PackedScene" uid="uid://e8n6voxlhud2" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="6_ooqsx"]
+[ext_resource type="PackedScene" uid="uid://dhkon18e3g27m" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="6_txgif"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_bgw71"]
 tile_data = PackedInt32Array(65536, 786432, 0, 1, 786432, 1, 65537, 851968, 0, 65538, 917504, 0)
@@ -230,3 +231,6 @@ position = Vector2(-82, -89)
 stream = ExtResource("5_lmtt4")
 autoplay = true
 parameters/looping = true
+
+[node name="Eagle" parent="." instance=ExtResource("6_txgif")]
+position = Vector2(206, -258)
