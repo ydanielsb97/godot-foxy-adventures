@@ -198,10 +198,6 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"on_trigger"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccd1b"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_763pt"]
 switch_mode = 2
 advance_mode = 2
@@ -214,18 +210,22 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxow8"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b3u3o"]
 states/Arrive/node = SubResource("AnimationNodeAnimation_b3u3o")
 states/Arrive/position = Vector2(448, 100)
 states/Attack/node = SubResource("AnimationNodeAnimation_xyuww")
-states/Attack/position = Vector2(724, 100)
+states/Attack/position = Vector2(560, 100)
 states/Hit/node = SubResource("AnimationNodeAnimation_mjv7n")
-states/Hit/position = Vector2(542, 225)
+states/Hit/position = Vector2(678, 215)
 states/Pulse/node = SubResource("AnimationNodeAnimation_vxow8")
-states/Pulse/position = Vector2(588, 100)
+states/Pulse/position = Vector2(678, 100)
 states/RESET/node = SubResource("AnimationNodeAnimation_tsvkr")
 states/RESET/position = Vector2(322, 100)
-transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mjv7n"), "RESET", "Arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "Arrive", "Pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b"), "Pulse", "Attack", SubResource("AnimationNodeStateMachineTransition_763pt"), "Attack", "Pulse", SubResource("AnimationNodeStateMachineTransition_b3u3o"), "Hit", "Pulse", SubResource("AnimationNodeStateMachineTransition_twko3")]
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mjv7n"), "RESET", "Arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "Pulse", "Attack", SubResource("AnimationNodeStateMachineTransition_763pt"), "Attack", "Pulse", SubResource("AnimationNodeStateMachineTransition_b3u3o"), "Hit", "Pulse", SubResource("AnimationNodeStateMachineTransition_twko3"), "Arrive", "Attack", SubResource("AnimationNodeStateMachineTransition_vxow8")]
 graph_offset = Vector2(81, 12)
 
 [node name="Boss" type="Node2D"]
