@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FoxyAdventures"
-run/main_scene="uid://cxbrat640wbw1"
+run/main_scene="uid://bi2ye58ta07ke"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://cy7hrne0oriv6"
 
@@ -40,6 +40,10 @@ folder_colors={
 "res://Resources/": "purple",
 "res://Scenes/": "red"
 }
+
+[global_group]
+
+Player=""
 
 [input]
 

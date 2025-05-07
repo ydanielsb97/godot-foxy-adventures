@@ -31,6 +31,7 @@ func shoot() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	animated_sprite_2d.play("fly")
+	Callable(fly_to_player).call_deferred()
 	direction_timer.start()
 
 func _on_direction_timer_timeout() -> void:
