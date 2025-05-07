@@ -5,11 +5,9 @@ extends Node
 const MAIN = preload("res://Scenes/Main/Main.tscn")
 const LEVEL_BASE = preload("res://Scenes/LevelBase/LevelBase.tscn")
 
-
 const Levels: Array[PackedScene] = [
-	LEVEL_BASE
-	#preload("res://Scenes/LevelBase/Level1.tscn"),
-	#preload("res://Scenes/LevelBase/Level2.tscn")
+	preload("res://Scenes/LevelBase/Level1/Level1.tscn"),
+	preload("res://Scenes/LevelBase/Level2/Level2.tscn")
 ]
 
 const SCORES_PATH = "user://high_scores.tres"

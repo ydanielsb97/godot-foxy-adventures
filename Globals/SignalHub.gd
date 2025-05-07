@@ -9,6 +9,10 @@ signal create_object(pos: Vector2, object_type: Constants.ObjectType)
 signal player_hit(lives: int, shake: bool)
 signal scored(points: int)
 signal boss_killed
+signal level_complete(complete: bool)
+
+func emit_level_complete(complete: bool) -> void:
+	level_complete.emit(complete)
 
 func emit_player_hit(lives: int, shake: bool) -> void:
 	player_hit.emit(lives, shake)

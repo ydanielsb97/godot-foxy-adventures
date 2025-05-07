@@ -33,12 +33,12 @@ func apply_jump() -> void:
 	animated_sprite_2d.play("jump")
 
 func start_timer() -> void:
-	jump_timer.start(randf_range(2, 3))
+	jump_timer.start(randf_range(0.5, 1.5))
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	if !_seen_player:
 		_seen_player = true
-		start_timer()
+		Callable(start_timer).call_deferred()
 
 func _on_jump_timer_timeout() -> void:
 	_can_jump = true

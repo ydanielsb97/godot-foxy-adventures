@@ -9,3 +9,5 @@ font_size = 32
 font_color = Color(0.580392, 0.858824, 0.929412, 1)
 outline_size = 2
 outline_color = Color(0.101028, 0.27957, 0.320522, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)

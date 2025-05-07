@@ -4,12 +4,14 @@ class_name Player
 
 @export var fell_off_y: float = 100.0
 @export var lives: int = 5
+@export var camera_min: Vector2 = Vector2(-10000, 10000)
+@export var camera_max: Vector2 = Vector2(10000, -10000)
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var debug_label: Label = $DebugLabel
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var hurt_timer: Timer = $HurtTimer
 @onready var shooter: Shooter = $Shooter
+@onready var player_cam: Camera2D = $PlayerCam
 
 const JUMP = preload("res://Assets/sound/jump.wav")
 const DAMAGE = preload("res://Assets/sound/damage.wav")
@@ -25,13 +27,21 @@ const JUMP_HURT_VELOCITY: Vector2 = Vector2(0, -130.0)
 var _jumps: int = 0
 var _is_hurt: bool = false
 var _invincible = false
+var _bump_up = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		var direction: Vector2 = Vector2.LEFT if sprite_2d.flip_h else Vector2.RIGHT
 		shooter.shoot(direction)
 
+func set_camera_limits() -> void:
+	player_cam.limit_bottom = camera_min.y
+	player_cam.limit_left = camera_min.x
+	player_cam.limit_top = camera_max.y
+	player_cam.limit_right = camera_max.x
+
 func _ready() -> void:
+	set_camera_limits()
 	Callable(late_init).call_deferred()
 
 func late_init() -> void:
@@ -49,7 +59,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	fallen_off()
-	update_debug_label()
+	
+	if _bump_up:
+		velocity.y = velocity.y - 500
+		_bump_up = false
 
 func play_effect(effect: AudioStream) -> void:
 	sound.stop()
@@ -61,15 +74,6 @@ func handle_input() -> void:
 	
 	handle_jump_input()
 	handle_side_movement()
-
-func update_debug_label() -> void:
-	var debug_string: String = ""
-	
-	debug_string += "Floor: %s\n" % is_on_floor()
-	debug_string += "v:%.1f, %.1f\n" % [velocity.x, velocity.y]
-	debug_string += "P:%.1f, %.1f\n" % [global_position.x, global_position.y]
-	
-	debug_label.text = debug_string
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -99,9 +103,9 @@ func go_invincible() -> void:
 	_invincible = true
 	
 	var tween = create_tween()
-	#for _i in range(3):
-		#tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.1)
-		#tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.1)
+	for _i in range(3):
+		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.1)
+		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.1)
 	tween.tween_property(self, "_invincible", false, 0)
 
 func fallen_off() -> void:
@@ -138,6 +142,9 @@ func apply_hit() -> void:
 	
 	go_invincible()
 	apply_hurt_jump()
+
+func bump_up() -> void:
+	_bump_up = true
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	Callable(apply_hit).call_deferred()

@@ -4,9 +4,8 @@
 [ext_resource type="Script" uid="uid://c75wacjwpbdnm" path="res://Scenes/Enemies/Frog/Frog.gd" id="2_bcfd2"]
 [ext_resource type="Texture2D" uid="uid://dl5kq6uxokj4c" path="res://Assets/enemies/frog/frog_sheet.png" id="2_l41ok"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l41ok"]
-radius = 7.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwcnn"]
+size = Vector2(19, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcfd2"]
 atlas = ExtResource("2_l41ok")
@@ -71,14 +70,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l41ok"]
-size = Vector2(20, 16)
+size = Vector2(21, 16)
 
 [node name="Frog" instance=ExtResource("1_lrhgu")]
+position = Vector2(0, -8)
 script = ExtResource("2_bcfd2")
 
 [node name="CollisionShape2D" parent="." index="0"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_l41ok")
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_iwcnn")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 scale = Vector2(0.75, 0.75)
@@ -87,11 +87,11 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(0, 1)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_l41ok")
 debug_color = Color(0.658824, 1, 0.027451, 0.419608)
 
-[node name="JumpTimer" type="Timer" parent="." index="4"]
+[node name="JumpTimer" type="Timer" parent="." index="3"]
 one_shot = true
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

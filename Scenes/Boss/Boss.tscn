@@ -11,45 +11,6 @@ height = 72.0
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_b3u3o"]
 a = Vector2(0, -187)
 
-[sub_resource type="Animation" id="Animation_xyuww"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_b3u3o"]
 resource_name = "Arrive"
 length = 0.7
@@ -112,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.912271, 4.71681e-06, 6.73831e-07, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0.517647), Color(0.912271, 4.71681e-06, 6.73831e-07, 1), Color(1, 1, 1, 0.517647), Color(1, 0, 0, 1), Color(1, 1, 1, 0.517647), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -164,6 +125,45 @@ tracks/1/keys = {
 "args": [],
 "method": &"shoot"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_xyuww"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxow8"]
@@ -226,7 +226,7 @@ states/Pulse/position = Vector2(588, 100)
 states/RESET/node = SubResource("AnimationNodeAnimation_tsvkr")
 states/RESET/position = Vector2(322, 100)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mjv7n"), "RESET", "Arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "Arrive", "Pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b"), "Pulse", "Attack", SubResource("AnimationNodeStateMachineTransition_763pt"), "Attack", "Pulse", SubResource("AnimationNodeStateMachineTransition_b3u3o"), "Hit", "Pulse", SubResource("AnimationNodeStateMachineTransition_twko3")]
-graph_offset = Vector2(119, 72)
+graph_offset = Vector2(81, 12)
 
 [node name="Boss" type="Node2D"]
 script = ExtResource("1_xyuww")
