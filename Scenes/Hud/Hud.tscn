@@ -107,6 +107,7 @@ text = "Exit: Escape"
 label_settings = SubResource("LabelSettings_ogn3t")
 
 [node name="VBXboxController" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 
