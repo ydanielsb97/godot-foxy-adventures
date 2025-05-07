@@ -1,8 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi2ye58ta07ke"]
+[gd_scene load_steps=8 format=3 uid="uid://bi2ye58ta07ke"]
 
 [ext_resource type="Script" uid="uid://cqqhocctd1cl" path="res://Scenes/Main/Main.gd" id="1_cmk6n"]
 [ext_resource type="Texture2D" uid="uid://bwffe0atcrg2g" path="res://Assets/backgrounds/game_background_3/game_background_3. 2.png" id="1_p8rbg"]
 [ext_resource type="LabelSettings" uid="uid://iq1elgbvlbss" path="res://Resources/red_title_96.tres" id="2_qtv3y"]
+[ext_resource type="LabelSettings" uid="uid://ca8u0f56ohsm4" path="res://Resources/blue_32.tres" id="4_i3fi7"]
+
+[sub_resource type="Animation" id="Animation_i3fi7"]
+resource_name = "blink_slowly"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PressSpaceLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.207843), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PressALabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.207843), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o8wgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PressSpaceLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PressALabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w20t6"]
+_data = {
+&"RESET": SubResource("Animation_o8wgc"),
+&"blink_slowly": SubResource("Animation_i3fi7")
+}
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -33,23 +95,53 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.00392157, 0, 0.470588, 0.215686)
 
-[node name="Title" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.5
-offset_top = -11.5
-offset_right = 64.5
-offset_bottom = 11.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Foxy Adventures"
 label_settings = ExtResource("2_qtv3y")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ControllerDetected]Label" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Controller Detected"
+label_settings = ExtResource("4_i3fi7")
+horizontal_alignment = 1
+
+[node name="PressSpaceLabel" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Press Space"
+label_settings = ExtResource("4_i3fi7")
+horizontal_alignment = 1
+
+[node name="PressALabel" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Press A"
+label_settings = ExtResource("4_i3fi7")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_w20t6")
+}
+autoplay = "blink_slowly"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 

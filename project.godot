@@ -24,6 +24,7 @@ GameManager="*res://Globals/GameManager.gd"
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor]
