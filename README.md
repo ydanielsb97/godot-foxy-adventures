@@ -2,6 +2,8 @@
 
 **Foxy Adventures** is a 2D platformer game featuring fast-paced action and multiple gameplay mechanics that keep players engaged and challenged.
 
+Play it: https://ys97.itch.io/foxy-adventures
+
 ## 🎮 Features
 
 - 🦊 Play as Foxy, a brave and agile adventurer
